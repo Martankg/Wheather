@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %} Weather {% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+
+    <h1 class="text-center mt-5">Weather</h1>
+
+    <form action="/search/" method="POST" class="input-group mb-3 mt-5">
+        {% csrf_token %}
+        <input type="text" class="form-control" placeholder="City name" aria-label="Recipient's username" aria-describedby="button-addon2"  name="city">
+        <button class="btn btn-outline-secondary" type="sumbit" id="button-addon2">Search</button>
+      </form>
+      
+          <!-- {{data}}  -->
+            <div style="display: flex;">
+                <div>
+                    <img src="{{ weather1 }}" alt="">
+                </div>
+                <div>
+                    <h6 style="margin-left: 150px;">Temparature in the city {{city}} :{{temp}} °C</h6>
+                    <h6 style="margin-left: 150px;">Feels like in the city temperature {{city}} :{{feels_like}} °C</h6>
+                    <h6 style="margin-left: 150px;">Minimal temparature in the city {{city}} :{{temp_min}} °C</h6>
+                    <h6 style="margin-left: 150px;">Maxsimum temperature in the city {{city}} :{{temp_max}} °C</h6>
+                </div> 
+                <div>
+                    <h3 style="margin-left: 200px;">Country:  {{sys}}</h3>
+                    <h3 style="margin-left: 200px;">Cloudly: {{clouds}} %</h3>
+                </div>   
+            </div>
+</div>   
+{% endblock %}
